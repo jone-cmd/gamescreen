@@ -5,23 +5,17 @@
 	<meta content="width=device-width, initial-scale=1" name="viewport">
 	<link href="css.css" rel="stylesheet">
 	<title>GameScreen</title>
+	<script src="js.js"></script>
+	<template id="game-template">
+		<div class="game">
+			<img alt="Game cover" class="game-cover" src="about:blank">
+			<h2 class="game-name"></h2>
+		</div>
+	</template>
 </head>
 <body>
 <main>
-	<section id="games">
-		<div class="game" id="prev-game">
-			<img alt="Game cover" src="about:blank">
-			<h2></h2>
-		</div>
-		<div class="game" id="current-game">
-			<img alt="Game cover" src="about:blank">
-			<h2></h2>
-		</div>
-		<div class="game" id="next-game">
-			<img alt="Game cover" src="about:blank">
-			<h2></h2>
-		</div>
-	</section>
+	<section id="games"></section>
 	<section id="button-bar">
 		<button id="add-game-button" type="button">+</button>
 	</section>
