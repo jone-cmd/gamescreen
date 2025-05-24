@@ -62,6 +62,10 @@ function renderGames(template = gameTemplate, target = gamesElement) {
 		gameName.innerText = game.name;
 		target.appendChild(renderedTemplate);
 	});
+	const firstGame = gamesElement.querySelector(".game");
+	if (firstGame) {
+		switchGame(firstGame.dataset.gameId); // Switch to 1st game
+	}
 }
 
 function startGame(gameID) {
@@ -109,10 +113,6 @@ window.addEventListener("load", () => {
 	gameTemplate = document.querySelector("#game-template");
 	gamesElement = document.querySelector("#games");
 	renderGames();
-	const firstGame = gamesElement.querySelector(".game");
-	if (firstGame) {
-		switchGame(firstGame.dataset.gameId); // Switch to 1st game
-	}
 	gamesElement.addEventListener("click", (event) => {
 		let gameElement = event.target;
 		while (gameElement && !gameElement.classList.contains("game")) {
