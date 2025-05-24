@@ -67,6 +67,43 @@ function startGame(gameID) {
 	window.location.href = `gamescreen://start/${gameID}`;
 }
 
+function getCurrentGameElement() {
+	const currentGameElement = gamesElement.querySelector("#current-game");
+	if (currentGameElement === null) {
+		return null;
+	} else {
+		return currentGameElement;
+	}
+}
+
+function getCurrentGame() {
+	return getCurrentGameElement().dataset.gameId;
+}
+
+function prevGame() {
+	checkForVariables();
+	let gameElement = getCurrentGameElement();
+	let prevGame = gameElement.previousSibling;
+	while (prevGame && prevGame.nodeType !== prevGame.ELEMENT_NODE) {
+		prevGame = prevGame.previousSibling;
+	}
+	if (prevGame) {
+		switchGame(prevGame.dataset.gameId);
+	}
+}
+
+function nextGame() {
+	checkForVariables();
+	let gameElement = getCurrentGameElement();
+	let nextGame = gameElement.nextSibling;
+	while (nextGame && nextGame.nodeType !== nextGame.ELEMENT_NODE) {
+		nextGame = nextGame.nextSibling;
+	}
+	if (nextGame) {
+		switchGame(nextGame.dataset.gameId);
+	}
+}
+
 window.addEventListener("load", () => {
 	gameTemplate = document.querySelector("#game-template");
 	gamesElement = document.querySelector("#games");
