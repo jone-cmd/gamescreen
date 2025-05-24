@@ -50,6 +50,7 @@ function fetchGames() {
 function renderGames(template = gameTemplate, target = gamesElement) {
 	checkForVariables();
 	const games = fetchGames();
+	target.innerHTML = "";
 	games.forEach(game => {
 		game.cover = "about:blank";
 		const renderedTemplate = template.content.cloneNode(true);
