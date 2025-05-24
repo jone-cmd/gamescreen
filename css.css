@@ -1,0 +1,123 @@
+* {
+	transition: all 0.25s ease;
+}
+
+:root {
+	--inactive-game-scale: 0.75;
+	--inactive-game-transform: scale(var(--inactive-game-scale));
+	--inactive-game-filter: opacity(50%);
+	--active-game-scale: 1;
+	--active-game-transform: scale(var(--active-game-scale));
+	--active-game-filter: opacity(100%);
+	--game-height: 5em;
+	--game-width: 10em;
+	--game-overlap: 1.5em;
+	--game-border-radius: 1em;
+
+	--text-color: #110;
+	--bg-color: #ffd;
+	--interactive-hover-bg-color: #ddb;
+	--interactive-active-bg-color: #cca;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--text-color: #ffd;
+		--bg-color: #110;
+		--interactive-hover-bg-color: #332;
+		--interactive-active-bg-color: #443;
+	}
+}
+
+body {
+	color: var(--text-color);
+	background-color: var(--bg-color);
+}
+
+::selection {
+	background-color: var(--text-color);
+	color: var(--bg-color);
+}
+
+#games {
+	width: calc(var(--game-width) * 2 * var(--inactive-game-scale) + var(--game-width) * var(--active-game-scale) - var(--game-overlap) * 2);
+	height: var(--game-height);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.game {
+	width: var(--game-width);
+	height: var(--game-height);
+	overflow: hidden;
+	position: absolute;
+	border-radius: var(--game-border-radius);
+	cursor: pointer;
+
+	img {
+		max-width: 100%;
+		max-height: 100%;
+		position: absolute;
+		border-radius: var(--game-border-radius);
+		top: 0;
+		left: 0;
+		z-index: 0;
+	}
+
+	h2 {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		z-index: 1;
+	}
+
+	&#current-game {
+		transform: var(--active-game-transform);
+		filter: var(--active-game-filter);
+		left: calc(var(--inactive-game-scale) * var(--game-width) - var(--game-overlap));
+		top: 0;
+		z-index: 1;
+	}
+
+	&:not(#current-game) {
+		transform: var(--inactive-game-transform);
+		filter: var(--inactive-game-filter);
+		top: 0;
+		z-index: 0;
+
+		&#prev-game {
+			left: 0;
+		}
+
+		&#next-game {
+			right: 0;
+		}
+	}
+
+	&:not(#current-game, #prev-game, #next-game) {
+		display: none;
+	}
+}
+
+#button-bar {
+	position: absolute;
+	bottom: 2.5em;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+button {
+	border-radius: 100%;
+	border: currentColor solid 0.125em;
+	background-color: var(--bg-color);
+	color: var(--text-color);
+}
+button:is(:hover, :focus) {
+	background-color: var(--interactive-hover-bg-color);
+}
+button:active {
+	background-color: var(--interactive-active-bg-color);
+}
