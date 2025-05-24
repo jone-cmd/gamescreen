@@ -128,4 +128,13 @@ window.addEventListener("load", () => {
 			console.warn("No game ID or invalid game!", gameElement)
 		}
 	});
+	document.addEventListener("keydown", (event) => {
+		if (event.key === "ArrowLeft") {
+			prevGame();
+		} else if (event.key === "ArrowRight") {
+			nextGame();
+		} else if (["Enter", " "].includes(event.key)) {
+			startGame(getCurrentGame());
+		}
+	})
 });
