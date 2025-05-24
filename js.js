@@ -137,4 +137,15 @@ window.addEventListener("load", () => {
 			startGame(getCurrentGame());
 		}
 	});
+	const mc = new Hammer(window, {});
+	mc.on("swipeleft swiperight", e => {
+		switch (e.type) {
+			case "swiperight":
+				prevGame();
+				break;
+			case "swipeleft":
+				nextGame();
+				break;
+		}
+	});
 });
