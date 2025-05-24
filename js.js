@@ -56,8 +56,7 @@ function renderGames(template = gameTemplate, target = gamesElement) {
 		const renderedTemplate = template.content.cloneNode(true);
 		const gameElement = renderedTemplate.querySelector(".game");
 		gameElement.dataset.gameId = game.id;
-		const gameCover = renderedTemplate.querySelector(".game-cover");
-		gameCover.src = game.cover;
+		gameElement.style.backgroundImage = `url(${game.cover})`;
 		const gameName = renderedTemplate.querySelector(".game-name");
 		gameName.innerText = game.name;
 		target.appendChild(renderedTemplate);

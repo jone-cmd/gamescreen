@@ -55,6 +55,8 @@ body {
 	position: absolute;
 	border-radius: var(--game-border-radius);
 	cursor: pointer;
+	background-color: var(--interactive-hover-bg-color);
+	background-size: cover;
 
 	img {
 		max-width: 100%;
