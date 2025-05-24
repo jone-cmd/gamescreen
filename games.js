@@ -1,7 +1,7 @@
 let gamesElement = null;
 let gameTemplate = null;
 
-function checkForVariables() {
+function games_checkForVariables() {
 	const errorMsgNotFound = "VARIABLE not found. Is the page fully loaded?";
 	const checkForNull = (variable, name) => {
 		if (variable === null) {
@@ -13,7 +13,7 @@ function checkForVariables() {
 }
 
 function switchGame(gameID) {
-	checkForVariables();
+	games_checkForVariables();
 	const gameElement = gamesElement.querySelector(`[data-game-id=${gameID}]`);
 	if (gameElement === null) {
 		throw new Error("Game not found");
@@ -48,7 +48,7 @@ function fetchGames() {
 }
 
 function renderGames(template = gameTemplate, target = gamesElement) {
-	checkForVariables();
+	games_checkForVariables();
 	const games = fetchGames();
 	target.innerHTML = "";
 	games.forEach(game => {
@@ -85,7 +85,7 @@ function getCurrentGame() {
 }
 
 function prevGame() {
-	checkForVariables();
+	games_checkForVariables();
 	let gameElement = getCurrentGameElement();
 	let prevGame = gameElement.previousSibling;
 	while (prevGame && prevGame.nodeType !== prevGame.ELEMENT_NODE) {
@@ -97,7 +97,7 @@ function prevGame() {
 }
 
 function nextGame() {
-	checkForVariables();
+	games_checkForVariables();
 	let gameElement = getCurrentGameElement();
 	let nextGame = gameElement.nextSibling;
 	while (nextGame && nextGame.nodeType !== nextGame.ELEMENT_NODE) {
