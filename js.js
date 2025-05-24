@@ -136,5 +136,5 @@ window.addEventListener("load", () => {
 		} else if (["Enter", " "].includes(event.key)) {
 			startGame(getCurrentGame());
 		}
-	})
+	});
 });
