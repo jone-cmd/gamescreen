@@ -52,7 +52,7 @@ function renderGames(template = gameTemplate, target = gamesElement) {
 	const games = fetchGames();
 	target.innerHTML = "";
 	games.forEach(game => {
-		game.cover = "about:blank";
+		game.cover = game.cover || "about:blank";
 		const renderedTemplate = template.content.cloneNode(true);
 		const gameElement = renderedTemplate.querySelector(".game");
 		gameElement.dataset.gameId = game.id;
