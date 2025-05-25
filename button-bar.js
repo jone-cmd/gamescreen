@@ -1,5 +1,5 @@
 async function fetchGameLibrary() {
-	const response = await fetch("/games.json");
+	const response = await fetch("games.json");
 	if (!response.ok) {
 		throw new Error(response.statusText);
 	}
