@@ -9,9 +9,9 @@
 	--active-game-scale: 1;
 	--active-game-transform: scale(var(--active-game-scale));
 	--active-game-filter: opacity(100%);
-	--game-height: 5em;
-	--game-width: 10em;
-	--game-overlap: 1.5em;
+	--game-height: 20vh;
+	--game-width: 20vw;
+	--game-overlap: 5vw;
 	--game-border-radius: 1em;
 
 	--text-color: #110;
