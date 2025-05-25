@@ -126,13 +126,6 @@ button, ::file-selector-button, input {
 	}
 }
 
-button:is(:hover, :focus) {
-	background-color: var(--interactive-hover-bg-color);
-}
-
-button:active {
-	background-color: var(--interactive-active-bg-color);
-}
 
 dialog {
 	background-color: var(--bg-color);
