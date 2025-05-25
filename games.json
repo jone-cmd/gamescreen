@@ -8,5 +8,15 @@
     "name": "Minecraft (via Minecraft Launcher)",
     "id": "minecraftlauncher",
     "cover": "https://minecraft.wiki/images/Minecraft_Key_Art_2024.jpg?3b672&format=original"
+  },
+  {
+    "name": "Stardew Valley",
+    "id": "stardewvalley",
+    "cover": "https://stardewvalleywiki.com/mediawiki/extensions/StardewValley/images/mobile_banner_2.png"
+  },
+  {
+    "name": "Luanti (formerly Minetest)",
+    "id": "luanti",
+    "cover": "https://www.luanti.org/media/icon.svg"
   }
 ]
