@@ -115,6 +115,14 @@ button {
 	border: currentColor solid 0.125em;
 	background-color: var(--bg-color);
 	color: var(--text-color);
+
+	&:is(:hover, :focus) {
+		background-color: var(--interactive-hover-bg-color);
+	}
+
+	&:active {
+		background-color: var(--interactive-active-bg-color);
+	}
 }
 
 button:is(:hover, :focus) {
