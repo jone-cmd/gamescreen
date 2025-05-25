@@ -12,7 +12,7 @@
 	--game-height: 20vh;
 	--game-width: 20vw;
 	--game-overlap: 5vw;
-	--game-border-radius: 1em;
+	--border-radius: 1em;
 
 	--text-color: #110;
 	--bg-color: #ffd;
@@ -53,7 +53,7 @@ body {
 	height: var(--game-height);
 	overflow: hidden;
 	position: absolute;
-	border-radius: var(--game-border-radius);
+	border-radius: var(--border-radius);
 	cursor: pointer;
 	background-color: var(--interactive-hover-bg-color);
 	background-size: cover;
@@ -66,7 +66,7 @@ body {
 		z-index: 1;
 	}
 
-	&#current-game {
+	&#current-game, &.available-game {
 		transform: var(--active-game-transform);
 		filter: var(--active-game-filter);
 		left: calc(var(--inactive-game-scale) * var(--game-width) - var(--game-overlap));
@@ -74,7 +74,7 @@ body {
 		z-index: 1;
 	}
 
-	&:not(#current-game) {
+	&:not(#current-game, .available-game) {
 		transform: var(--inactive-game-transform);
 		filter: var(--inactive-game-filter);
 		top: 0;
@@ -89,8 +89,14 @@ body {
 		}
 	}
 
-	&:not(#current-game, #prev-game, #next-game) {
+	&:not(#current-game, #prev-game, #next-game, .available-game) {
 		display: none;
+	}
+
+	&.available-game {
+		position: static;
+		display: inline-block;
+		margin: 0.5em;
 	}
 }
 
@@ -99,10 +105,13 @@ body {
 	bottom: 2.5em;
 	left: 50%;
 	transform: translateX(-50%);
+	button {
+		border-radius: 100%;
+	}
 }
 
 button {
-	border-radius: 100%;
+	border-radius: var(--border-radius);
 	border: currentColor solid 0.125em;
 	background-color: var(--bg-color);
 	color: var(--text-color);
@@ -114,4 +123,15 @@ button:is(:hover, :focus) {
 
 button:active {
 	background-color: var(--interactive-active-bg-color);
+}
+
+dialog {
+	background-color: var(--bg-color);
+	color: var(--text-color);
+	border-radius: var(--border-radius);
+	border: currentColor solid 0.125em;
+}
+
+#downscale-canvas {
+	display: none;
 }

@@ -7,6 +7,7 @@
 	<title>GameScreen</title>
 	<script src="hammer.min.js"></script>
 	<script src="games.js"></script>
+	<script src="button-bar.js"></script>
 	<template id="game-template">
 		<div class="game">
 			<h2 class="game-name"></h2>
@@ -14,12 +15,37 @@
 	</template>
 </head>
 <body>
+<canvas id="downscale-canvas"></canvas>
 <main>
 	<section id="games"></section>
 	<section id="button-bar">
 		<button id="add-game-button" type="button">+</button>
 	</section>
 	<section id="keybinds"></section>
+	<dialog id="add-game-dialog">
+		<h1>Add game</h1>
+		<form id="add-game-form" method="dialog">
+			<p>
+				<label for="game-name-input">Name:</label>
+				<input id="game-name-input" required type="text">
+			</p>
+			<p>
+				<label for="game-id-input">ID:</label>
+				<input id="game-id-input" required type="text">
+			</p>
+			<p>
+				<label for="game-image-input">Image:</label>
+				<input accept="image/*" id="game-image-input" required type="file">
+			</p>
+			<p>
+				<button>Add Game</button>
+			</p>
+		</form>
+		<section id="game-library"></section>
+		<p>
+			<button id="reset-games-button">Reset Games</button>
+		</p>
+	</dialog>
 </main>
 </body>
 </html>
