@@ -84,6 +84,9 @@ window.addEventListener("load", _ => {
 	});
 	const resetGamesButton = document.getElementById("reset-games-button");
 	resetGamesButton.addEventListener("click", _ => {
+		if (!prompt("Are you sure to reset all games?")) {
+			return;
+		}
 		localStorage.games = JSON.stringify([]);
 		renderGames();
 		addGameDialog.close();
