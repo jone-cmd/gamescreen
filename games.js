@@ -129,6 +129,9 @@ window.addEventListener("load", () => {
 		}
 	});
 	document.addEventListener("keydown", (event) => {
+		if ([...document.querySelectorAll("dialog, button")].some(elem => elem.contains(event.target))) {
+			return;
+		}
 		if (event.key === "ArrowLeft") {
 			prevGame();
 		} else if (event.key === "ArrowRight") {
