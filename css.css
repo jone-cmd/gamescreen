@@ -111,7 +111,7 @@ body {
 	}
 }
 
-button, input {
+button, ::file-selector-button, input {
 	border-radius: var(--border-radius);
 	border: currentColor solid 0.125em;
 	background-color: var(--bg-color);
