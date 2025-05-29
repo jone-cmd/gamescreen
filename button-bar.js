@@ -84,7 +84,7 @@ window.addEventListener("load", _ => {
 	});
 	const resetGamesButton = document.getElementById("reset-games-button");
 	resetGamesButton.addEventListener("click", _ => {
-		if (!prompt("Are you sure to reset all games?")) {
+		if (!confirm("Are you sure to reset all games?")) {
 			return;
 		}
 		localStorage.games = JSON.stringify([]);
@@ -93,7 +93,7 @@ window.addEventListener("load", _ => {
 	});
 	const removeGameButton = document.getElementById("remove-game-button");
 	removeGameButton.addEventListener("click", _ => {
-		if (!prompt("Are you sure to remove the current game?")) {
+		if (!confirm("Are you sure to remove the current game?")) {
 			return;
 		}
 		const oldGames = fetchGames();
