@@ -13,6 +13,7 @@
 	--game-width: 20vw;
 	--game-overlap: 5vw;
 	--border-radius: 1em;
+	--game-bg-color: var(--interactive-hover-bg-color);
 
 	--text-color: #110;
 	--bg-color: #ffd;
@@ -55,7 +56,7 @@ body {
 	position: absolute;
 	border-radius: var(--border-radius);
 	cursor: pointer;
-	background-color: var(--interactive-hover-bg-color);
+	background-color: var(--game-bg-color);
 	background-size: cover;
 	background-position: center;
 
