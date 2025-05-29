@@ -100,5 +100,6 @@ window.addEventListener("load", _ => {
 		const currentGame = getCurrentGame();
 		const games = oldGames.filter(game => game.id !== currentGame);
 		localStorage.games = JSON.stringify(games);
+		renderGames();
 	});
 });
