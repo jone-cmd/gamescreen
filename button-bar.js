@@ -70,6 +70,9 @@ window.addEventListener("load", _ => {
 			}
 			canvas.width = desiredWidth;
 			canvas.height = desiredHeight;
+			const gameBGColor = getComputedStyle(canvas).getPropertyValue("--game-bg-color");
+			ctx.fillStyle = `${gameBGColor}`;
+			ctx.fillRect(0, 0, canvas.width, canvas.height);
 			ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 			const cover = canvas.toDataURL("image/jpeg");
 			const game = {name, id, cover};
