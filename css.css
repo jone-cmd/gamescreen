@@ -57,6 +57,7 @@ body {
 	cursor: pointer;
 	background-color: var(--interactive-hover-bg-color);
 	background-size: cover;
+	background-position: center;
 
 	h2 {
 		position: absolute;
