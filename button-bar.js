@@ -91,4 +91,14 @@ window.addEventListener("load", _ => {
 		renderGames();
 		addGameDialog.close();
 	});
+	const removeGameButton = document.getElementById("remove-game-button");
+	removeGameButton.addEventListener("click", _ => {
+		if (!prompt("Are you sure to remove the current game?")) {
+			return;
+		}
+		const oldGames = fetchGames();
+		const currentGame = getCurrentGame();
+		const games = oldGames.filter(game => game.id !== currentGame);
+		localStorage.games = JSON.stringify(games);
+	});
 });
