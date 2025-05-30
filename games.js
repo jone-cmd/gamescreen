@@ -14,7 +14,7 @@ function games_checkForVariables() {
 
 function switchGame(gameID) {
 	games_checkForVariables();
-	const gameElement = gamesElement.querySelector(`[data-game-id=${gameID}]`);
+	const gameElement = gamesElement.querySelector(`[data-game-id="${gameID.replace(/(["\\])/g, '\\$1')}"]`);
 	if (gameElement === null) {
 		throw new Error("Game not found");
 	}
