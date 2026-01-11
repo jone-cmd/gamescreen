@@ -31,6 +31,7 @@ window.addEventListener("load", (_) => {
           gameIDInput.value = game.id;
           const gameImageInput =
             addGameDialog.querySelector("#game-image-input");
+          const addGameForm = document.getElementById("add-game-form");
           fetch(game.cover)
             .then((response) => {
               if (response.ok) {
@@ -49,6 +50,7 @@ window.addEventListener("load", (_) => {
               dataTransfer.items.add(file);
               gameImageInput.files = dataTransfer.files;
             });
+          addGameForm.dataset.imageUrl = game.cover;
         });
         gameLibraryElement.appendChild(gameElement);
       });
@@ -82,7 +84,12 @@ window.addEventListener("load", (_) => {
       ctx.fillStyle = `${gameBGColor}`;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-      const cover = canvas.toDataURL("image/jpeg");
+      let cover;
+      if (!addGameForm.dataset.imageUrl) {
+        cover = canvas.toDataURL("image/jpeg");
+      } else {
+        cover = addGameForm.dataset.imageUrl;
+      }
       const game = { name, id, cover };
       const currentGames = fetchGames();
       const games = currentGames.filter((game) => game.id !== id);
@@ -95,6 +102,10 @@ window.addEventListener("load", (_) => {
       img.src = e.target.result;
     });
     reader.readAsDataURL(coverFile);
+  });
+  const gameImageInput = document.getElementById("game-image-input");
+  gameImageInput.addEventListener("change", (_) => {
+    addGameForm.dataset.imageUrl = null;
   });
   const resetGamesButton = document.getElementById("reset-games-button");
   resetGamesButton.addEventListener("click", (_) => {
