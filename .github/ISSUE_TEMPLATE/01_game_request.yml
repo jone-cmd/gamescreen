@@ -1,0 +1,38 @@
+name: "Game Request"
+description: "Request a new game to be added to GameScreen."
+title: "[GAME REQUEST] NAME"
+labels: ["game request", "good first issue"]
+projects: ["jone-cmd/2"]
+body:
+  - type: "markdown"
+    attributes:
+      value: |
+        Hello, and thanks you want to contribute to GameScreen!
+        Please fill out the form replace the placeholders with the actual values.
+        > [!TIP]
+        > For example, if you want to add `Minecraft (via Prism Launcher)`, you would ...
+        > * ... name the issue `[GAME REQUEST] Prism Launcher`
+        > * ... fill in the name `Prism Launcher`
+        > * ... use the ID `prismlauncher`
+  - type: input
+    id: name
+    attributes:
+      label: Name
+      description: What game (optionally via which launcher) should be added?
+    validations:
+      required: true
+  - type: input
+    id: id
+    attributes:
+      label: ID
+      description: The technical unique identifier for `games.json`
+    validations:
+      required: false
+  - type: input
+    id: image
+    attributes:
+      label: Image
+      description: An image to show (e.g. cover art)
+      placeholder: URL
+    validations:
+      required: false
