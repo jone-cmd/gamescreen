@@ -1,141 +1,148 @@
 * {
-	transition: all 0.25s ease;
+  transition: all 0.25s ease;
 }
 
 :root {
-	--inactive-game-scale: 0.75;
-	--inactive-game-transform: scale(var(--inactive-game-scale));
-	--inactive-game-filter: opacity(50%);
-	--active-game-scale: 1;
-	--active-game-transform: scale(var(--active-game-scale));
-	--active-game-filter: opacity(100%);
-	--game-height: 30vh;
-	--game-width: 30vw;
-	--game-overlap: 5vw;
-	--border-radius: 1em;
-	--game-bg-color: var(--interactive-hover-bg-color);
+  --inactive-game-scale: 0.75;
+  --inactive-game-transform: scale(var(--inactive-game-scale));
+  --inactive-game-filter: opacity(50%);
+  --active-game-scale: 1;
+  --active-game-transform: scale(var(--active-game-scale));
+  --active-game-filter: opacity(100%);
+  --game-height: 30vh;
+  --game-width: 30vw;
+  --game-overlap: 5vw;
+  --border-radius: 1em;
+  --game-bg-color: var(--interactive-hover-bg-color);
 
-	--text-color: #110;
-	--bg-color: #ffd;
-	--interactive-hover-bg-color: #ddb;
-	--interactive-active-bg-color: #cca;
+  --text-color: #110;
+  --bg-color: #ffd;
+  --interactive-hover-bg-color: #ddb;
+  --interactive-active-bg-color: #cca;
 }
 
 @media (prefers-color-scheme: dark) {
-	:root {
-		--text-color: #ffd;
-		--bg-color: #110;
-		--interactive-hover-bg-color: #332;
-		--interactive-active-bg-color: #443;
-	}
+  :root {
+    --text-color: #ffd;
+    --bg-color: #110;
+    --interactive-hover-bg-color: #332;
+    --interactive-active-bg-color: #443;
+  }
 }
 
 body {
-	color: var(--text-color);
-	background-color: var(--bg-color);
+  color: var(--text-color);
+  background-color: var(--bg-color);
 }
 
 ::selection {
-	background-color: var(--text-color);
-	color: var(--bg-color);
+  background-color: var(--text-color);
+  color: var(--bg-color);
 }
 
 #games {
-	width: calc(var(--game-width) * 2 * var(--inactive-game-scale) + var(--game-width) * var(--active-game-scale) - var(--game-overlap) * 2);
-	height: var(--game-height);
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+  width: calc(
+    var(--game-width) * 2 * var(--inactive-game-scale) + var(--game-width) *
+      var(--active-game-scale) - var(--game-overlap) * 2
+  );
+  height: var(--game-height);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .game {
-	width: var(--game-width);
-	height: var(--game-height);
-	overflow: hidden;
-	position: absolute;
-	border-radius: var(--border-radius);
-	cursor: pointer;
-	background-color: var(--game-bg-color);
-	background-size: cover;
-	background-position: center;
+  width: var(--game-width);
+  height: var(--game-height);
+  overflow: hidden;
+  position: absolute;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  background-color: var(--game-bg-color);
+  background-size: cover;
+  background-position: center;
 
-	h2 {
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		width: 100%;
-		z-index: 1;
-	}
+  h2 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+  }
 
-	&#current-game, &.available-game {
-		transform: var(--active-game-transform);
-		filter: var(--active-game-filter);
-		left: calc(var(--inactive-game-scale) * var(--game-width) - var(--game-overlap));
-		top: 0;
-		z-index: 1;
-	}
+  &#current-game,
+  &.available-game {
+    transform: var(--active-game-transform);
+    filter: var(--active-game-filter);
+    left: calc(
+      var(--inactive-game-scale) * var(--game-width) - var(--game-overlap)
+    );
+    top: 0;
+    z-index: 1;
+  }
 
-	&:not(#current-game, .available-game) {
-		transform: var(--inactive-game-transform);
-		filter: var(--inactive-game-filter);
-		top: 0;
-		z-index: 0;
+  &:not(#current-game, .available-game) {
+    transform: var(--inactive-game-transform);
+    filter: var(--inactive-game-filter);
+    top: 0;
+    z-index: 0;
 
-		&#prev-game {
-			left: 0;
-		}
+    &#prev-game {
+      left: 0;
+    }
 
-		&#next-game {
-			right: 0;
-		}
-	}
+    &#next-game {
+      right: 0;
+    }
+  }
 
-	&:not(#current-game, #prev-game, #next-game, .available-game) {
-		display: none;
-	}
+  &:not(#current-game, #prev-game, #next-game, .available-game) {
+    display: none;
+  }
 
-	&.available-game {
-		position: static;
-		display: inline-block;
-		margin: 0.5em;
-	}
+  &.available-game {
+    position: static;
+    display: inline-block;
+    margin: 0.5em;
+  }
 }
 
 #button-bar {
-	position: absolute;
-	bottom: 2.5em;
-	left: 50%;
-	transform: translateX(-50%);
+  position: absolute;
+  bottom: 2.5em;
+  left: 50%;
+  transform: translateX(-50%);
 
-	button {
-		border-radius: 100%;
-	}
+  button {
+    border-radius: 100%;
+  }
 }
 
-button, ::file-selector-button, input {
-	border-radius: var(--border-radius);
-	border: currentColor solid 0.125em;
-	background-color: var(--bg-color);
-	color: var(--text-color);
+button,
+::file-selector-button,
+input {
+  border-radius: var(--border-radius);
+  border: currentColor solid 0.125em;
+  background-color: var(--bg-color);
+  color: var(--text-color);
 
-	&:is(:hover, :focus) {
-		background-color: var(--interactive-hover-bg-color);
-	}
+  &:is(:hover, :focus) {
+    background-color: var(--interactive-hover-bg-color);
+  }
 
-	&:active {
-		background-color: var(--interactive-active-bg-color);
-	}
+  &:active {
+    background-color: var(--interactive-active-bg-color);
+  }
 }
-
 
 dialog {
-	background-color: var(--bg-color);
-	color: var(--text-color);
-	border-radius: var(--border-radius);
-	border: currentColor solid 0.125em;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  border-radius: var(--border-radius);
+  border: currentColor solid 0.125em;
 }
 
 #downscale-canvas {
-	display: none;
+  display: none;
 }
