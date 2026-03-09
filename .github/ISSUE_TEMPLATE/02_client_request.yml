@@ -1,0 +1,25 @@
+name: "Client Request"
+description: "Request a client to be added to GameScreen."
+title: "[CLIENT REQUEST] OS"
+labels: ["client request"]
+projects: []
+body:
+  - type: "markdown"
+    attributes:
+      value: |
+        Hello, and thanks you want to contribute to GameScreen!
+        Please fill out the form replace the placeholders with the actual values.
+  - type: input
+    id: os
+    attributes:
+      label: OS
+      description: What OS should be added?
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: Add more details here (e.g. if you want to develop, ...)
+    validations:
+      required: true
